@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Abstract"
 output:
   workflowr::wflow_html:
     toc: false
@@ -7,4 +7,5 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+Cocaine use disorder (CUD) is characterized by compulsive searching for cocaine that produces cognitive deficits, including lack of inhibition and decision-making. Several studies have shown that cocaine users exhibit brain volume and diffusion-based white-matter alterations in a wide variety of brain regions. However, the non-specificity of standard volumetric and diffusion-tensor methods to detect structural micropathology may lead to wrong conclusions. To better understand microstructural pathology in CUD, we analyzed 60 CUD participants (3 female) and 43 non-CUD controls (HC; 2 female) retrospectively from our cross-sectional Mexican SUD neuroimaging dataset (SUDMEX-CONN), using multi-shell diffusion-weighted imaging and the neurite orientation dispersion and density imaging (NODDI) analysis whose aims to more accurately model micro-structural pathology . We used Viso values of NODDI that employ a three-compartment model in white (WM) and gray-matter (GM). These values were correlated with clinical measures, including psychiatric severity status, impulsive behavior and pattern of cocaine and tobacco use in the CUD group. As hypothesized, we found higher whole-brain microstructural pathology in WM and GM in CUD patients than controls. ROI analysis revealed higher Viso-NODDI values in superior longitudinal fasciculus, cingulum, hippocampus cingulum, forceps minor and Uncinate fasciculus, as well as in frontal and parieto-temporal GM structures. Correlations between significant ROIs showed a dependency of impulsivity and years of cocaine consumption over Viso-NODDI. However, we did not find correlations with psychopathology measures. Overall, microstructural pathology seems to be present in CUD both in gray and white-matter, however their clinical relevance remains questionable.
+

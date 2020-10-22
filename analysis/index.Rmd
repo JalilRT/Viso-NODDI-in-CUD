@@ -12,7 +12,12 @@ Datasets and code for the "Neurite orientation dispersion and density imaging in
 
 Please let us know if something in the code is incomplete or files are missing or you have any problems:
 
-jalil.rasgadoto@gmail.com
-apurva.shah@scmia.edu.in
+jalil.rasgadoto@gmail.com and/or apurva.shah@scmia.edu.in
 
+# About
 
+# Data
+
+# Workflow and Code
+
+BIDS compliant raw MRI data are available at OpenNeuro: https://openneuro.org/datasets/ds003037/versions/1.0.0
