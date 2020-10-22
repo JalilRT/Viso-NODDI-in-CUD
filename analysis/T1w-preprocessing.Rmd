@@ -1,0 +1,42 @@
+---
+title: "T1w-preprocessing"
+author: "Apurva Shah"
+date: "2020-10-22"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Preprocessing
+
+
+```{bash}
+#! /bin/bash
+
+DIR=$PWD	#Base directory path
+List=${DIR}/Subjects.txt	#List of Subjects
+
+for Sub in `cat ${List}`
+do
+echo ${Sub}
+
+T1_Nifti=${DIR}/NIFTIs/${Sub}/sub-${Sub}_T1w.nii.gz	#Raw T1 structural data
+
+mkdir -p ${DIR}/Freesurfer/${Sub}		
+export SUBJECTS_DIR=${DIR}/Freesurfer
+mkdir -p ${SUBJECTS_DIR}/${Sub}/mri/orig
+
+rm ${SUBJECTS_DIR}/${Sub}/scripts/IsRunning.lh+rh
+
+mri_convert ${T1_Nifti} ${SUBJECTS_DIR}/${Sub}/mri/orig/001.mgz		#converting nifti to mgz
+
+cd ${SUBJECTS_DIR}
+recon-all -all -s ${Sub}		#perform T1 preprocessing and Compute Parcellation of whole brain
+
+mri_convert ${SUBJECTS_DIR}/mri/brain.mgz ${SUBJECTS_DIR}/mri/nifti/brain.nii.gz
+mri_convert ${SUBJECTS_DIR}/mri/aparc+aseg.mgz ${SUBJECTS_DIR}/freeLabels.nii.gz
+
+done
+```
+
+

@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Neurite orientation dispersion and density imaging in cocaine use disorder"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,4 +8,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Datasets and code for the "Neurite orientation dispersion and density imaging in cocaine use disorder" analysis.
+
+Please let us know if something in the code is incomplete or files are missing or you have any problems:
+
+jalil.rasgadoto@gmail.com
+apurva.shah@scmia.edu.in
+
+
