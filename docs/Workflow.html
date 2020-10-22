@@ -30,6 +30,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -521,16 +523,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomJalilRTVisoNODDIinCUDtree372d376108b8f73cd24c8739c658d300a0acf5e3targetblank372d376a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/JalilRT/Viso-NODDI-in-CUD/tree/372d376108b8f73cd24c8739c658d300a0acf5e3" target="_blank">372d376</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomJalilRTVisoNODDIinCUDtree57d8f6b4dc99792349c8212c4e01e82d35320714targetblank57d8f6ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/JalilRT/Viso-NODDI-in-CUD/tree/57d8f6b4dc99792349c8212c4e01e82d35320714" target="_blank">57d8f6b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomJalilRTVisoNODDIinCUDtree372d376108b8f73cd24c8739c658d300a0acf5e3targetblank372d376a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomJalilRTVisoNODDIinCUDtree57d8f6b4dc99792349c8212c4e01e82d35320714targetblank57d8f6ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/JalilRT/Viso-NODDI-in-CUD/tree/372d376108b8f73cd24c8739c658d300a0acf5e3" target="_blank">372d376</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/JalilRT/Viso-NODDI-in-CUD/tree/57d8f6b4dc99792349c8212c4e01e82d35320714" target="_blank">57d8f6b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -539,6 +541,12 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  data/Conn_database_clinicals_fwi.csv
+    Untracked:  data/OpenN_FW_noddi_analysis_3.csv
+    Untracked:  data/OpenN_FW_noddi_analysis_results_3.csv
+    Untracked:  data/dataclin8_final.csv
 
 Unstaged changes:
     Deleted:    analysis/DTI-FWE.Rmd
@@ -588,6 +596,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/JalilRT/Viso-NODDI-in-CUD/blob/57d8f6b4dc99792349c8212c4e01e82d35320714/analysis/Workflow.Rmd" target="_blank">57d8f6b</a>
+</td>
+<td>
+JalilRT
+</td>
+<td>
+2020-10-22
+</td>
+<td>
+Publish the initial files for Viso-NODDI-in-CUD
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/JalilRT/Viso-NODDI-in-CUD/12a117eb50f88af491be9d3950d5801196c09e71/docs/Workflow.html" target="_blank">12a117e</a>
+</td>
+<td>
+JalilRT
+</td>
+<td>
+2020-10-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/JalilRT/Viso-NODDI-in-CUD/blob/372d376108b8f73cd24c8739c658d300a0acf5e3/analysis/Workflow.Rmd" target="_blank">372d376</a>
 </td>
 <td>
@@ -607,12 +649,14 @@ Publish the initial files for Viso-NODDI-in-CUD
 </div>
 </div>
 </div>
-<p>To reproduce the results, please follow the following flow and using codes we provided.</p>
+<p>To reproduce the results, please follow the following, using codes we provided.</p>
+<div id="method-to-processing" class="section level2">
+<h2>Method to processing</h2>
+<p>The preprocessing of DWI and T1 images included initial manual quality assessment and conversion from dicom to nifti format.</p>
+</div>
 <div id="t1-weighted-preprocessing" class="section level2">
 <h2>T1-weighted preprocessing</h2>
-</div>
-<div id="section" class="section level1">
-<h1></h1>
+<p>The T1w images were then processed and parcellated into 86 regions of interest (ROIs) (68 cortical and 18 sub-cortical) of the Desikan atlas using Freesurfer 6.0. The pre-processing steps involved skull striping, bias correction, and tissue segmentation. Subsequently, surface-based non-linear registration to map the cortical sulci-gyri and volume-based registration for subcortical structures were performed.</p>
 <pre class="bash"><code>#! /bin/bash
 
 DIR=$PWD    #Base directory path
@@ -639,8 +683,10 @@ mri_convert ${SUBJECTS_DIR}/mri/brain.mgz ${SUBJECTS_DIR}/mri/nifti/brain.nii.gz
 mri_convert ${SUBJECTS_DIR}/mri/aparc+aseg.mgz ${SUBJECTS_DIR}/freeLabels.nii.gz
 
 done</code></pre>
+</div>
 <div id="diffusion-weighted-preprocessing" class="section level2">
 <h2>Diffusion weighted preprocessing</h2>
+<p>DWI volumes were preprocessed using FSL 6.0.11 (<a href="https://fsl.fmrib.ox.ac.uk" class="uri">https://fsl.fmrib.ox.ac.uk</a>). Initial steps included correction of eddy current artifacts and motion noise induced by eddy currents using “eddy_correct” which employed affine transformation to diffusion gradient images to the baseline b=0 image and distortion correction using “topup”. Based on the rotation parameters in the transformation, the gradients were rotated to match the transformed images. Subsequently, the brain extraction was performed using the brain extraction too. To map WM regions we employed the JHU-WM atlas which contains 20 tracts defined in MNI space.</p>
 <pre class="bash"><code>#! /bin/bash
 
 FSLOUTPUTTYPE=NIFTI_GZ
@@ -695,8 +741,47 @@ dtifit -k ${Sub_dir}/${Sub}_eddy_ss.nii.gz -o ${Sub_dir}/${Sub}_DWI -m ${Sub_dir
 cp -rf ${bvl} ${Sub_dir}/${Sub}/sub-${Sub}_dwi_eddy_SS.bval 
 cp -rf ${Sub_dir}/${Sub}_eddy.eddy_rotated_bvecs ${Sub_dir}/${Sub}/sub-${Sub}_dwi_eddy_SS.bvec </code></pre>
 </div>
+<div id="extracting-viso-values" class="section level2">
+<h2>Extracting Viso values</h2>
+<p>used the neurite orientation dispersion and density imaging (NODDI) method that employs a three-compartment model to understand brain tissue microstructure in detail. NODDI produces three metrics that quantify: (1) the fractional volume of extracellular fluid (isotropic volume fraction [Viso]), (2) intracellular neurite dispersion (orientation dispersion index [ODI]) and (3) neurite density (volume fraction [Vic]), after eliminating effects of extracellular fluid [ref]. We employed the NODDI toolbox in MATLAB (<a href="http://mig.cs.ucl.ac.uk/index.php?n=Tutorial.NODDImatlab" class="uri">http://mig.cs.ucl.ac.uk/index.php?n=Tutorial.NODDImatlab</a>) on preprocessed DWI images.</p>
+<pre class="bash"><code>clc;
+clear all;
+
+%%
+DIR = pwd;
+
+Sub_list = [DIR &#39;/OpenNeuro_FWE/Subjects.txt&#39;
+fid=fopen(Sub_list,&#39;r&#39;);
+ID=fscanf(fid,&#39;%f&#39;,[1 131]);
+fclose(fid);
+for i=1:length(ID)
+    fprintf(&#39;loading the data.....\n&#39;);
+    DWI = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_eddy_SS.nii.gz&#39;];
+    Mask = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_brain_mask.nii.gz&#39;];
+    gunzip(DWI,[DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i))]);
+    gunzip(Mask,[DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i))]);
+    DWI = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_eddy_SS.nii&#39;];
+    Mask = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_brain_mask.nii&#39;];
+    bvecs = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_eddy_SS.bval&#39;];
+    bvals = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_eddy_SS.bvec&#39;];
+    ROI = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_NODDI_roi.mat&#39;];
+    Fitted_Param = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_FittedParams.mat&#39;];
+    Out = [DIR &#39;/OpenNeuro_FWE/&#39; num2str(ID(i)) &#39;/&#39; num2str(ID(i)) &#39;_DWI_NoddiFit&#39;];
+    fprintf(&#39;creating the ROI.....\n&#39;);
+    CreateROI(DWI, Mask, ROI);
+    fprintf(&#39;defining the protocol.....\n&#39;);
+    DWI_protocol = FSL2Protocol(bvecs, bvals);
+    fprintf(&#39;defining the model.....\n&#39;);
+    noddi_model = MakeModel(&#39;WatsonSHStickTortIsoV_B0&#39;);   
+    fprintf(&#39;fitting the NODDI model to the data.....\n&#39;);
+    batch_fitting(ROI, DWI_protocol, noddi_model, Fitted_Param, 4);
+    fprintf(&#39;writing the fitted parameters to nii files.....\n&#39;);
+    SaveParamsAsNIfTI(Fitted_Param, ROI, Mask, Out);
+end</code></pre>
+</div>
 <div id="diffusion-fwe-analysis" class="section level2">
 <h2>Diffusion FWE analysis</h2>
+<p>These 86 ROIs were translated to the diffusion space by employing a symmetric diffeomorphic transformation model (SyN) using Advanced Normalization Tools (ANTs). We extract at the end the ROIs values from data processings</p>
 <pre class="bash"><code>#! /bin/bash
 
 
@@ -756,6 +841,880 @@ fslstats -t ${DIR}/${i}/${i}_DWI_NoddiFit_fiso -k ${DIR}/${i}/FWE_DTI/JHU_WM_dwi
 done
 
 done</code></pre>
+</div>
+<div id="plot-the-results" class="section level2">
+<h2>Plot the results</h2>
+<p>To plot the Viso-values differences between structures in two groups we use the next libraries:</p>
+<pre class="r"><code>library(ggseg)
+library(ggsegJHU)
+dk$region[-c(2,8,9,31,34,10,12,15,73,74,53,75,80,60,81,61,83,87)]&lt;-NA
+ggseg(atlas = dk, mapping = aes(fill=region),
+      position = &quot;stacked&quot;, colour = &quot;black&quot;, 
+      show.legend = F,size=0.7) + scale_fill_brain(&quot;dk&quot;)</code></pre>
+<p><img src="figure/Workflow.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>aseg$region[-c(15,28)]&lt;-NA
+ggseg(atlas=aseg,mapping=aes(fill=region),show.legend = F,
+      colour=&quot;black&quot;,size=0.7) + scale_fill_brain(&quot;aseg&quot;)</code></pre>
+<p><img src="figure/Workflow.Rmd/unnamed-chunk-5-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>jhu$region[-c(9,12,14,22,23,35,40)]&lt;-NA
+ggseg(atlas = jhu, mapping = aes(fill = region),colour=&quot;black&quot;,size=0.7,show.legend=F) +
+  scale_fill_brain(&quot;jhu&quot;, package = &quot;ggsegJHU&quot;)</code></pre>
+<p><img src="figure/Workflow.Rmd/unnamed-chunk-5-3.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="tables" class="section level3">
+<h3>Tables</h3>
+<pre class="r"><code>library(kableExtra)
+library(formattable)
+datos.struc&lt;-read.csv(paste0(getwd(),&quot;/data/OpenN_FW_noddi_analysis_results_3.csv&quot;))
+colnames(datos.struc)&lt;-c(&quot;Region&quot;,&quot;Group&quot;,&quot;mean&quot;,&quot;sd&quot;,&quot;p-value&quot;)
+datos.struc.GM&lt;-datos.struc[-c(1:14),]
+rownames(datos.struc.GM)&lt;-NULL
+datos.struc.GM$Region&lt;-c(&quot;Superior temporal sulcus L&quot;,&quot;Superior temporal sulcus L&quot;,&quot;lateral orbitofrontal L&quot;,&quot;lateral orbitofrontal L&quot;,
+                         &quot;middle temporal L&quot;,&quot;middle temporal L&quot;,&quot;parahippocampal L&quot;,&quot;parahippocampal L&quot;,
+                         &quot;pars opercularis L&quot;,&quot;pars opercularis L&quot;,&quot;pars triangularis L&quot;,&quot;pars triangularis L&quot;,
+                         &quot;rostral middle frontal L&quot;,&quot;rostral middle frontal L&quot;,&quot;pallidum L&quot;,&quot;pallidum L&quot;,
+                         &quot;inferior parietal R&quot;,&quot;inferior parietal R&quot;,&quot;inferior temporal R&quot;,&quot;inferior temporal R&quot;,
+                         &quot;lateral occipital R&quot;,&quot;lateral occipital R&quot;,&quot;pars triangularis R&quot;,&quot;pars triangularis R&quot;,
+                         &quot;postcentral R&quot;,&quot;postcentral R&quot;,&quot;posterior cingulate R&quot;,&quot;posterior cingulate R&quot;,
+                         &quot;rostral middle frontal R&quot;,&quot;rostral middle frontal R&quot;,&quot;supramarginal R&quot;,&quot;supramarginal R&quot;,
+                         &quot;cerebellum cortex R&quot;,&quot;cerebellum cortex R&quot;)
+
+datos.struc.GM$mean&lt;-color_bar(alpha(c(&quot;#196428&quot;,&quot;#196428&quot;,&quot;#234b32&quot;,&quot;#234b32&quot;,                                &quot;#a06432&quot;,&quot;#a06432&quot;,&quot;#14dc3c&quot;,&quot;#14dc3c&quot;,&quot;#dcb48c&quot;,&quot;#dcb48c&quot;,
+                                      &quot;#dc3c14&quot;,&quot;#dc3c14&quot;,
+                                      &quot;#4b327d&quot;,&quot;#4b327d&quot;,&quot;#0c30ff&quot;,&quot;#0c30ff&quot;,                                      &quot;#dc3cdc&quot;,&quot;#dc3cdc&quot;,&quot;#b42878&quot;,&quot;#b42878&quot;,&quot;#141e8c&quot;,&quot;#141e8c&quot;,
+                                      &quot;#dc3c14&quot;,&quot;#dc3c14&quot;,
+                                      &quot;#dc1414&quot;,&quot;#dc1414&quot;,&quot;#dcb4dc&quot;,&quot;#dcb4dc&quot;,                                    &quot;#4b327d&quot;,&quot;#4b327d&quot;,&quot;#50a014&quot;,&quot;#50a014&quot;,&quot;#dcf8a4&quot;,&quot;#dcf8a4&quot;),0.75))(datos.struc.GM$mean)
+tabla.GM&lt;-kable(datos.struc.GM, escape = F) %&gt;% kable_minimal(full_width = F) %&gt;%
+  column_spec(1, bold = T, width = &quot;5.5cm&quot;) %&gt;%
+  column_spec(2,color = c(&quot;#5fadc2&quot;,&quot;#3d6470&quot;)) %&gt;%
+  column_spec(3, color=&quot;black&quot;,width = &quot;4cm&quot;) %&gt;%
+  collapse_rows(columns = c(1,5))
+tabla.GM</code></pre>
+<table class=" lightable-minimal" style="font-family: &quot;Trebuchet MS&quot;, verdana, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Region
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+p-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+Superior temporal sulcus L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(25, 100, 40, 0.75); width: 41.75%">0.172</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(25, 100, 40, 0.75); width: 34.22%">0.141</span>
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+lateral orbitofrontal L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(35, 75, 50, 0.75); width: 67.96%">0.280</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(35, 75, 50, 0.75); width: 61.41%">0.253</span>
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+middle temporal L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(160, 100, 50, 0.75); width: 68.20%">0.281</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(160, 100, 50, 0.75); width: 60.19%">0.248</span>
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+parahippocampal L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(20, 220, 60, 0.75); width: 79.85%">0.329</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.043
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(20, 220, 60, 0.75); width: 72.09%">0.297</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+pars opercularis L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 180, 140, 0.75); width: 78.88%">0.325</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 180, 140, 0.75); width: 71.36%">0.294</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+pars triangularis L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 60, 20, 0.75); width: 90.78%">0.374</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.012
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 60, 20, 0.75); width: 81.07%">0.334</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+rostral middle frontal L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(75, 50, 125, 0.75); width: 81.07%">0.334</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(75, 50, 125, 0.75); width: 70.63%">0.291</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+pallidum L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(12, 48, 255, 0.75); width: 33.25%">0.137</span>
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.037
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(12, 48, 255, 0.75); width: 36.89%">0.152</span>
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+inferior parietal R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 60, 220, 0.75); width: 61.17%">0.252</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 60, 220, 0.75); width: 54.85%">0.226</span>
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+inferior temporal R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(180, 40, 120, 0.75); width: 52.67%">0.217</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.030
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(180, 40, 120, 0.75); width: 47.09%">0.194</span>
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+lateral occipital R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(20, 30, 140, 0.75); width: 52.43%">0.216</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.031
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(20, 30, 140, 0.75); width: 46.12%">0.190</span>
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+pars triangularis R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 60, 20, 0.75); width: 90.78%">0.374</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 60, 20, 0.75); width: 81.80%">0.337</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+postcentral R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 20, 20, 0.75); width: 100.00%">0.412</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.034
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 20, 20, 0.75); width: 91.75%">0.378</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+posterior cingulate R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 180, 220, 0.75); width: 52.43%">0.216</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.011
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 180, 220, 0.75); width: 42.72%">0.176</span>
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+rostral middle frontal R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(75, 50, 125, 0.75); width: 88.11%">0.363</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(75, 50, 125, 0.75); width: 77.91%">0.321</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+supramarginal R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(80, 160, 20, 0.75); width: 74.27%">0.306</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(80, 160, 20, 0.75); width: 66.02%">0.272</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+cerebellum cortex R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 248, 164, 0.75); width: 91.26%">0.376</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(220, 248, 164, 0.75); width: 81.31%">0.335</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>datos.struc.WM&lt;-datos.struc[c(1:14),]
+rownames(datos.struc.WM)&lt;-NULL
+datos.struc.WM$Region&lt;-c(&quot;cingulum gyrus L&quot;,&quot;cingulum gyrus L&quot;,&quot;cingulum gyrus hippocampus R&quot;,&quot;cingulum gyrus hippocampus R&quot;,
+                         &quot;forceps minor&quot;,&quot;forceps minor&quot;,
+                         &quot;superior longitudinal fasciculus L&quot;, &quot;superior longitudinal fasciculus L&quot;,&quot;medial lemniscus R&quot;,&quot;medial lemniscus R&quot;,
+                         &quot;medial lemniscus L&quot;,&quot;medial lemniscus L&quot;,&quot;uncinate fasciculus L&quot;,&quot;uncinate fasciculus L&quot;)
+datos.struc.WM$mean&lt;-color_bar(alpha(c(&quot;#00ff40&quot;,&quot;#00ff40&quot;,&quot;#ffcc00&quot;,&quot;#ffcc00&quot;,&quot;#c4ff00&quot;,&quot;#c4ff00&quot;,
+                                       &quot;#eaff00&quot;,&quot;#eaff00&quot;,&quot;#9568e0&quot;,&quot;#9568e0&quot;,&quot;#9568e0&quot;,&quot;#9568e0&quot;,&quot;#0040ff&quot;,&quot;#0040ff&quot;),0.75))(datos.struc.WM$mean)
+tabla.WM&lt;-kable(datos.struc.WM, escape = F) %&gt;% kable_minimal(full_width = F) %&gt;%
+  column_spec(1, bold = T, width = &quot;5.5cm&quot;) %&gt;%
+  column_spec(2,color = c(&quot;#5fadc2&quot;,&quot;#3d6470&quot;)) %&gt;%
+  column_spec(3, color=&quot;black&quot;,width = &quot;4cm&quot;) %&gt;%
+  collapse_rows(columns = c(1,5))
+tabla.WM</code></pre>
+<table class=" lightable-minimal" style="font-family: &quot;Trebuchet MS&quot;, verdana, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Region
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+p-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+cingulum gyrus L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(0, 255, 64, 0.75); width: 72.20%">0.174</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.021
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(0, 255, 64, 0.75); width: 61.83%">0.149</span>
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+cingulum gyrus hippocampus R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(255, 204, 0, 0.75); width: 100.00%">0.241</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(255, 204, 0, 0.75); width: 85.89%">0.207</span>
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+forceps minor
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(196, 255, 0, 0.75); width: 80.08%">0.193</span>
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="4">
+0.012
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(196, 255, 0, 0.75); width: 73.44%">0.177</span>
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+superior longitudinal fasciculus L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(234, 255, 0, 0.75); width: 86.72%">0.209</span>
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(234, 255, 0, 0.75); width: 78.84%">0.190</span>
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+medial lemniscus R
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(149, 104, 224, 0.75); width: 51.45%">0.124</span>
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(149, 104, 224, 0.75); width: 67.22%">0.162</span>
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+medial lemniscus L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(149, 104, 224, 0.75); width: 52.28%">0.126</span>
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.044
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(149, 104, 224, 0.75); width: 65.98%">0.159</span>
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5.5cm; font-weight: bold;vertical-align: middle !important;" rowspan="2">
+uncinate fasciculus L
+</td>
+<td style="text-align:left;color: #5fadc2 !important;">
+CUD
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(0, 64, 255, 0.75); width: 70.54%">0.170</span>
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;vertical-align: middle !important;" rowspan="2">
+0.033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: #3d6470 !important;">
+HC
+</td>
+<td style="text-align:left;width: 4cm; color: black !important;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: rgba(0, 64, 255, 0.75); width: 60.58%">0.146</span>
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="global-correlation-with-clinical-measures" class="section level2">
+<h2>Global correlation with clinical measures</h2>
+<p>After extract NODDI values, in this case Viso-NODDI. We merged them in a csv table in order to calculate the analysis of interest. We also load the clinical metrics</p>
+<pre class="r"><code># loading the libraries needed
+library(tidyverse)
+library(tibble)
+library(Hmisc)
+library(corrplot)
+
+noddi&lt;-read.csv(paste0(getwd(),&quot;/data/OpenN_FW_noddi_analysis_3.csv&quot;))
+clinicals&lt;-read.csv(paste0(getwd(),&quot;/data/Conn_database_clinicals_fwi.csv&quot;))</code></pre>
+<p>Filter for only Cocaine use disorder group and make the analysis.</p>
+<pre class="r"><code>data.noddi&lt;-noddi %&gt;% filter(Group==2) %&gt;% select(-c(&quot;Id&quot;,&quot;Group&quot;,&quot;Age&quot;,&quot;Sex&quot;))
+data.clinicals&lt;-clinicals %&gt;% filter(grupo==2) %&gt;% select(-c(&quot;RID&quot;,&quot;grupo&quot;,
+                                                             &quot;age&quot;,&quot;sex&quot;,&quot;educ&quot;))
+data.noddi[is.na(data.noddi)]&lt;-0
+data.clinicals[is.na(data.clinicals)]&lt;-0
+data.clinic&lt;-data.clinicals[-c(5:6,15:19,44:52,55)]
+data.together&lt;-data.frame(data.clinic,data.noddi)
+rcor.viso.clinic&lt;-rcorr(as.matrix(data.together), type = c(&quot;pearson&quot;))
+p.adj.viso.clinic&lt;-p.adjust(rcor.viso.clinic$P, method = &quot;fdr&quot;, 
+                            n = length(rcor.viso.clinic$P))
+resAdj.viso.clinic &lt;- matrix(p.adj.viso.clinic, ncol = dim(rcor.viso.clinic$P)[1])
+r.cor.ros.len&lt;-rcor.viso.clinic$r[,]
+
+## You can save them in csv or plot them using corrplot
+#write.csv(rcor.viso.clinic$r,&quot;rcor.csv&quot;, row.names = TRUE)
+#write.csv(rcor.viso.clinic$P,&quot;pcor.csv&quot;)
+#write.csv(resAdj.viso.clinic,&quot;padcor2.csv&quot;, row.names = TRUE)</code></pre>
+</div>
+<div id="partial-correlation-using-covariables" class="section level2">
+<h2>Partial correlation using covariables</h2>
+<p>To calculate partial correlation, we use Education and Sex as covariables. Taking cocaine use pattern, tobacco total years, CCQ, BIS, ASIP</p>
+<pre class="r"><code>data.noddi&lt;-noddi %&gt;% filter(Group==2) 
+data.clinicals&lt;-clinicals %&gt;% filter(grupo==2) 
+data.noddi&lt;-data.noddi[-c(1:4)]
+data.clinicals&lt;-data.clinicals[-c(1:2)]
+data.clinicals[is.na(data.clinicals)]&lt;-0
+data.clinic&lt;-data.clinicals[-c(1:4,8:9,11,18:55,58)]
+clin&lt;-1:ncol(data.clinic)
+nods&lt;-1:ncol(data.noddi)
+structures&lt;-colnames(data.noddi)
+score.clini&lt;-colnames(data.clinic)
+
+library(ppcor)
+pctest.noddi.clinical&lt;-lapply(clin,function(y) sapply(nods, function(x) pcor.test(data.noddi[x],data.clinic[y],list(data.clinicals$educ,data.clinicals$sex), method=&quot;pearson&quot;)))
+
+pc.nclin&lt;-lapply(pctest.noddi.clinical, head, 1)
+pc.nclins&lt;-lapply(pc.nclin,setNames,structures)
+r.pcor&lt;-bind_rows(pc.nclins)
+rownames(r.pcor)&lt;-score.clini
+
+ppc.nclin&lt;-lapply(pctest.noddi.clinical, `[`, 2, )
+ppc.nclinr&lt;-lapply(ppc.nclin,function(d) rbind(d))
+ppc.nclins&lt;-lapply(ppc.nclinr,setNames,structures)
+p.pcors&lt;-bind_rows(ppc.nclins)
+rownames(p.pcors)&lt;-score.clini
+
+p.pcors&lt;-data.matrix(p.pcors)
+ppvalues.bc&lt;-p.pcors[which(p.pcors&lt;=0.05)]
+matrixr.pcor&lt;-data.matrix(r.pcor)
+#write.csv(p.pcors,&quot;p_pcors.csv&quot;, row.names = TRUE)
+#write.csv(matrixr.pcor,&quot;matrixr_pcor.csv&quot;, row.names = TRUE)</code></pre>
+<p>After calculated it, we can load it in a superheat plot, only checking the p-values &gt; 0.05, and add it in a csv table, for non significant we put 0-values</p>
+<pre class="r"><code>library(superheat)
+clin.cor.r2&lt;-read.csv(paste0(getwd(),&quot;/data/dataclin8_final.csv&quot;))
+m.clin.cor.r&lt;-data.matrix(clin.cor.r2[,-c(1,2,3)])
+gears &lt;- paste(clin.cor.r2$Area, &quot;Matter&quot;)
+rownames(m.clin.cor.r)&lt;-clin.cor.r2$Region
+colnames(m.clin.cor.r)&lt;-c(&quot;Age onset&quot;,&quot;week dose&quot;,
+                          &quot;Cognitive&quot;,&quot;Motor&quot;,&quot;Non planned&quot;,&quot;Total score&quot;)
+
+superheat(m.clin.cor.r, 
+                  pretty.order.rows = TRUE,
+                  pretty.order.cols = FALSE,
+                  heat.pal = c(&quot;#005e91&quot;, &quot;white&quot;,&quot;#c43333&quot;),
+                  heat.na.col = &quot;white&quot;,
+                  n.clusters.rows = 2,
+                  membership.rows = gears, #puesto a mano, borrar si se desea hacer por kmeans
+                  left.label = &quot;variable&quot;,
+                  left.label.col = &quot;white&quot;,
+                  row.title.size = 6,
+                  bottom.label.text.angle = 90,
+                  column.title.size = 6,
+                  yr = clin.cor.r2$FW,
+                  yr.axis.name = &quot;Viso Values&quot;,
+                  yr.axis.size = 15,
+                  yr.plot.type = &quot;bar&quot;,
+                  yr.bar.col = &quot;black&quot;,
+                  X.text = as.matrix(m.clin.cor.r),
+                  yr.cluster.col = c(&quot;#65767b&quot;,&quot;#93c6d4&quot;),
+                  bottom.label.col = c(&quot;#b3e2cd&quot;,&quot;#b3e2cd&quot;,
+                                       &quot;#b6a3c8&quot;,&quot;#b6a3c8&quot;,&quot;#b6a3c8&quot;,&quot;#b6a3c8&quot;),
+                  bottom.label.size = 0.20042)</code></pre>
+<p><img src="figure/Workflow.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -784,18 +1743,42 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.2
+ [1] superheat_0.1.0     ppcor_1.1           MASS_7.3-51.5      
+ [4] corrplot_0.84       Hmisc_4.4-1         Formula_1.2-4      
+ [7] survival_3.1-8      lattice_0.20-38     forcats_0.5.0      
+[10] stringr_1.4.0       dplyr_1.0.2         purrr_0.3.4        
+[13] readr_1.4.0         tidyr_1.1.2         tibble_3.0.4       
+[16] tidyverse_1.3.0     formattable_0.2.0.1 kableExtra_1.3.0   
+[19] ggsegJHU_1.0        ggseg_1.5.5         ggplot2_3.3.2      
+[22] workflowr_1.6.2    
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5       rstudioapi_0.11  whisker_0.4      knitr_1.30      
- [5] magrittr_1.5     R6_2.4.1         rlang_0.4.8      stringr_1.4.0   
- [9] tools_3.6.3      xfun_0.18        git2r_0.27.1     htmltools_0.5.0 
-[13] ellipsis_0.3.1   rprojroot_1.3-2  yaml_2.2.1       digest_0.6.26   
-[17] tibble_3.0.4     lifecycle_0.2.0  crayon_1.3.4     later_1.1.0.1   
-[21] vctrs_0.3.4      promises_1.1.1   fs_1.5.0         glue_1.4.2      
-[25] evaluate_0.14    rmarkdown_2.5    stringi_1.5.3    compiler_3.6.3  
-[29] pillar_1.4.6     backports_1.1.10 httpuv_1.5.4     pkgconfig_2.0.3 </code></pre>
-</div>
+ [1] fs_1.5.0            lubridate_1.7.9     webshot_0.5.2      
+ [4] RColorBrewer_1.1-2  httr_1.4.2          rprojroot_1.3-2    
+ [7] tools_3.6.3         backports_1.1.10    R6_2.4.1           
+[10] rpart_4.1-15        DBI_1.1.0           colorspace_1.4-1   
+[13] nnet_7.3-12         withr_2.3.0         tidyselect_1.1.0   
+[16] gridExtra_2.3       compiler_3.6.3      git2r_0.27.1       
+[19] cli_2.1.0           rvest_0.3.6         htmlTable_2.1.0    
+[22] xml2_1.3.2          labeling_0.4.2      scales_1.1.1       
+[25] checkmate_2.0.0     digest_0.6.26       foreign_0.8-75     
+[28] rmarkdown_2.5       base64enc_0.1-3     jpeg_0.1-8.1       
+[31] pkgconfig_2.0.3     htmltools_0.5.0     dbplyr_1.4.4       
+[34] htmlwidgets_1.5.2   rlang_0.4.8         readxl_1.3.1       
+[37] rstudioapi_0.11     farver_2.0.3        generics_0.0.2     
+[40] jsonlite_1.7.1      magrittr_1.5        Matrix_1.2-18      
+[43] Rcpp_1.0.5          munsell_0.5.0       fansi_0.4.1        
+[46] lifecycle_0.2.0     stringi_1.5.3       whisker_0.4        
+[49] yaml_2.2.1          grid_3.6.3          blob_1.2.1         
+[52] promises_1.1.1      crayon_1.3.4        haven_2.3.1        
+[55] splines_3.6.3       hms_0.5.3           knitr_1.30         
+[58] pillar_1.4.6        reprex_0.3.0        glue_1.4.2         
+[61] evaluate_0.14       latticeExtra_0.6-29 data.table_1.13.2  
+[64] modelr_0.1.8        vctrs_0.3.4         png_0.1-7          
+[67] httpuv_1.5.4        selectr_0.4-2       cellranger_1.1.0   
+[70] gtable_0.3.0        assertthat_0.2.1    xfun_0.18          
+[73] broom_0.7.2         later_1.1.0.1       viridisLite_0.3.0  
+[76] cluster_2.1.0       ellipsis_0.3.1     </code></pre>
 </div>
 </div>
 
