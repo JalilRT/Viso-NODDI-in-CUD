@@ -1,7 +1,7 @@
-name: "Viso-NODDI-in-CUD"
+name: Viso-NODDI-in-CUD
 output_dir: ../docs
 navbar:
-  title: "Viso-NODDI-in-CUD"
+  title: Viso-NODDI-in-CUD
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/JalilRT/Viso-NODDI-in-CUD
 output:
   workflowr::wflow_html:
     toc: yes
