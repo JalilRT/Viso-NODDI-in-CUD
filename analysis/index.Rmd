@@ -18,6 +18,8 @@ jalil.rasgadoto@gmail.com and/or apurva.shah@scmia.edu.in
 
 # Data
 
+BIDS compliant raw MRI data are available at OpenNeuro: https://openneuro.org/datasets/ds003037/versions/1.0.0
+
 # Workflow and Code
 
-BIDS compliant raw MRI data are available at OpenNeuro: https://openneuro.org/datasets/ds003037/versions/1.0.0
+For check the workflow go to above tab. Csv files and supplementaries are available in source github of this page: data/

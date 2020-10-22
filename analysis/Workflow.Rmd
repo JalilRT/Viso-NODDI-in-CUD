@@ -7,11 +7,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-To reproduce the results, please follow the following flow and using codes we provided.
+To reproduce the results, please follow the following, using codes we provided.
+
+## Method to processing
+
+The preprocessing of DWI and T1 images included initial manual quality assessment and conversion from dicom to nifti format.
 
 ## T1-weighted preprocessing
 
-# 
+The T1w images were then processed and parcellated into 86 regions of interest (ROIs) (68 cortical and 18 sub-cortical) of the Desikan atlas using Freesurfer 6.0. The pre-processing steps involved skull striping, bias correction, and tissue segmentation. Subsequently, surface-based non-linear registration to map the cortical sulci-gyri and volume-based registration for subcortical structures were performed.
+ 
 ```{bash, eval=FALSE, engine="sh"}
 #! /bin/bash
 
@@ -43,6 +48,8 @@ done
 
 
 ## Diffusion weighted preprocessing
+
+DWI volumes were preprocessed using FSL 6.0.11 (https://fsl.fmrib.ox.ac.uk). Initial steps included correction of eddy current artifacts and motion noise induced by eddy currents using “eddy_correct” which employed affine transformation to diffusion gradient images to the baseline b=0 image and distortion correction using “topup”. Based on the rotation parameters in the transformation, the gradients were rotated to match the transformed images. Subsequently, the brain extraction was performed using the brain extraction too. To map WM regions we employed the JHU-WM atlas which contains 20 tracts defined in MNI space.
 
 ```{bash, eval=FALSE, engine="sh"}
 #! /bin/bash
@@ -100,8 +107,50 @@ cp -rf ${bvl} ${Sub_dir}/${Sub}/sub-${Sub}_dwi_eddy_SS.bval
 cp -rf ${Sub_dir}/${Sub}_eddy.eddy_rotated_bvecs ${Sub_dir}/${Sub}/sub-${Sub}_dwi_eddy_SS.bvec 
 ```
 
+## Extracting Viso values 
+
+ used the neurite orientation dispersion and density imaging (NODDI) method that employs a three-compartment model to understand brain tissue microstructure in detail. NODDI produces three metrics that quantify: (1) the fractional volume of extracellular fluid (isotropic volume fraction [Viso]), (2) intracellular neurite dispersion (orientation dispersion index [ODI]) and (3) neurite density (volume fraction [Vic]), after eliminating effects of extracellular fluid [ref]. We employed the NODDI toolbox in MATLAB (http://mig.cs.ucl.ac.uk/index.php?n=Tutorial.NODDImatlab) on preprocessed DWI images. 
+
+```{bash, eval=FALSE, engine="sh"}
+clc;
+clear all;
+
+%%
+DIR = pwd;
+
+Sub_list = [DIR '/OpenNeuro_FWE/Subjects.txt'
+fid=fopen(Sub_list,'r');
+ID=fscanf(fid,'%f',[1 131]);
+fclose(fid);
+for i=1:length(ID)
+    fprintf('loading the data.....\n');
+    DWI = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_eddy_SS.nii.gz'];
+    Mask = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_brain_mask.nii.gz'];
+    gunzip(DWI,[DIR '/OpenNeuro_FWE/' num2str(ID(i))]);
+    gunzip(Mask,[DIR '/OpenNeuro_FWE/' num2str(ID(i))]);
+    DWI = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_eddy_SS.nii'];
+    Mask = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_brain_mask.nii'];
+    bvecs = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_eddy_SS.bval'];
+    bvals = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_eddy_SS.bvec'];
+    ROI = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_NODDI_roi.mat'];
+    Fitted_Param = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_FittedParams.mat'];
+    Out = [DIR '/OpenNeuro_FWE/' num2str(ID(i)) '/' num2str(ID(i)) '_DWI_NoddiFit'];
+    fprintf('creating the ROI.....\n');
+    CreateROI(DWI, Mask, ROI);
+    fprintf('defining the protocol.....\n');
+    DWI_protocol = FSL2Protocol(bvecs, bvals);
+    fprintf('defining the model.....\n');
+    noddi_model = MakeModel('WatsonSHStickTortIsoV_B0');   
+    fprintf('fitting the NODDI model to the data.....\n');
+    batch_fitting(ROI, DWI_protocol, noddi_model, Fitted_Param, 4);
+    fprintf('writing the fitted parameters to nii files.....\n');
+    SaveParamsAsNIfTI(Fitted_Param, ROI, Mask, Out);
+end
+```
 
 ## Diffusion FWE analysis
+
+These 86 ROIs were translated to the diffusion space by employing a symmetric diffeomorphic transformation model (SyN) using Advanced Normalization Tools (ANTs). We extract at the end the ROIs values from data processings
 
 ```{bash, eval=FALSE, engine="sh"}
 #! /bin/bash
@@ -163,5 +212,187 @@ fslstats -t ${DIR}/${i}/${i}_DWI_NoddiFit_fiso -k ${DIR}/${i}/FWE_DTI/JHU_WM_dwi
 done
 
 done
+```
+
+## Plot the results
+
+To plot the Viso-values differences between structures in two groups we use the next libraries:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggseg)
+library(ggsegJHU)
+dk$region[-c(2,8,9,31,34,10,12,15,73,74,53,75,80,60,81,61,83,87)]<-NA
+ggseg(atlas = dk, mapping = aes(fill=region),
+      position = "stacked", colour = "black", 
+      show.legend = F,size=0.7) + scale_fill_brain("dk")
+
+aseg$region[-c(15,28)]<-NA
+ggseg(atlas=aseg,mapping=aes(fill=region),show.legend = F,
+      colour="black",size=0.7) + scale_fill_brain("aseg")
+
+jhu$region[-c(9,12,14,22,23,35,40)]<-NA
+ggseg(atlas = jhu, mapping = aes(fill = region),colour="black",size=0.7,show.legend=F) +
+  scale_fill_brain("jhu", package = "ggsegJHU")
+
+```
+
+### Tables
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(kableExtra)
+library(formattable)
+datos.struc<-read.csv(paste0(getwd(),"/data/OpenN_FW_noddi_analysis_results_3.csv"))
+colnames(datos.struc)<-c("Region","Group","mean","sd","p-value")
+datos.struc.GM<-datos.struc[-c(1:14),]
+rownames(datos.struc.GM)<-NULL
+datos.struc.GM$Region<-c("Superior temporal sulcus L","Superior temporal sulcus L","lateral orbitofrontal L","lateral orbitofrontal L",
+                         "middle temporal L","middle temporal L","parahippocampal L","parahippocampal L",
+                         "pars opercularis L","pars opercularis L","pars triangularis L","pars triangularis L",
+                         "rostral middle frontal L","rostral middle frontal L","pallidum L","pallidum L",
+                         "inferior parietal R","inferior parietal R","inferior temporal R","inferior temporal R",
+                         "lateral occipital R","lateral occipital R","pars triangularis R","pars triangularis R",
+                         "postcentral R","postcentral R","posterior cingulate R","posterior cingulate R",
+                         "rostral middle frontal R","rostral middle frontal R","supramarginal R","supramarginal R",
+                         "cerebellum cortex R","cerebellum cortex R")
+
+datos.struc.GM$mean<-color_bar(alpha(c("#196428","#196428","#234b32","#234b32",                                "#a06432","#a06432","#14dc3c","#14dc3c","#dcb48c","#dcb48c",
+                                      "#dc3c14","#dc3c14",
+                                      "#4b327d","#4b327d","#0c30ff","#0c30ff",                                      "#dc3cdc","#dc3cdc","#b42878","#b42878","#141e8c","#141e8c",
+                                      "#dc3c14","#dc3c14",
+                                      "#dc1414","#dc1414","#dcb4dc","#dcb4dc",                                    "#4b327d","#4b327d","#50a014","#50a014","#dcf8a4","#dcf8a4"),0.75))(datos.struc.GM$mean)
+tabla.GM<-kable(datos.struc.GM, escape = F) %>% kable_minimal(full_width = F) %>%
+  column_spec(1, bold = T, width = "5.5cm") %>%
+  column_spec(2,color = c("#5fadc2","#3d6470")) %>%
+  column_spec(3, color="black",width = "4cm") %>%
+  collapse_rows(columns = c(1,5))
+tabla.GM
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+datos.struc.WM<-datos.struc[c(1:14),]
+rownames(datos.struc.WM)<-NULL
+datos.struc.WM$Region<-c("cingulum gyrus L","cingulum gyrus L","cingulum gyrus hippocampus R","cingulum gyrus hippocampus R",
+                         "forceps minor","forceps minor",
+                         "superior longitudinal fasciculus L", "superior longitudinal fasciculus L","medial lemniscus R","medial lemniscus R",
+                         "medial lemniscus L","medial lemniscus L","uncinate fasciculus L","uncinate fasciculus L")
+datos.struc.WM$mean<-color_bar(alpha(c("#00ff40","#00ff40","#ffcc00","#ffcc00","#c4ff00","#c4ff00",
+                                       "#eaff00","#eaff00","#9568e0","#9568e0","#9568e0","#9568e0","#0040ff","#0040ff"),0.75))(datos.struc.WM$mean)
+tabla.WM<-kable(datos.struc.WM, escape = F) %>% kable_minimal(full_width = F) %>%
+  column_spec(1, bold = T, width = "5.5cm") %>%
+  column_spec(2,color = c("#5fadc2","#3d6470")) %>%
+  column_spec(3, color="black",width = "4cm") %>%
+  collapse_rows(columns = c(1,5))
+tabla.WM
+```
+
+
+## Global correlation with clinical measures
+
+After extract NODDI values, in this case Viso-NODDI. We merged them in a csv table in order to calculate the analysis of interest. We also load the clinical metrics
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# loading the libraries needed
+library(tidyverse)
+library(tibble)
+library(Hmisc)
+library(corrplot)
+
+noddi<-read.csv(paste0(getwd(),"/data/OpenN_FW_noddi_analysis_3.csv"))
+clinicals<-read.csv(paste0(getwd(),"/data/Conn_database_clinicals_fwi.csv"))
+```
+
+Filter for only Cocaine use disorder group and make the analysis.
+
+```{r}
+data.noddi<-noddi %>% filter(Group==2) %>% select(-c("Id","Group","Age","Sex"))
+data.clinicals<-clinicals %>% filter(grupo==2) %>% select(-c("RID","grupo",
+                                                             "age","sex","educ"))
+data.noddi[is.na(data.noddi)]<-0
+data.clinicals[is.na(data.clinicals)]<-0
+data.clinic<-data.clinicals[-c(5:6,15:19,44:52,55)]
+data.together<-data.frame(data.clinic,data.noddi)
+rcor.viso.clinic<-rcorr(as.matrix(data.together), type = c("pearson"))
+p.adj.viso.clinic<-p.adjust(rcor.viso.clinic$P, method = "fdr", 
+                            n = length(rcor.viso.clinic$P))
+resAdj.viso.clinic <- matrix(p.adj.viso.clinic, ncol = dim(rcor.viso.clinic$P)[1])
+r.cor.ros.len<-rcor.viso.clinic$r[,]
+
+## You can save them in csv or plot them using corrplot
+#write.csv(rcor.viso.clinic$r,"rcor.csv", row.names = TRUE)
+#write.csv(rcor.viso.clinic$P,"pcor.csv")
+#write.csv(resAdj.viso.clinic,"padcor2.csv", row.names = TRUE)
+```
+
+## Partial correlation using covariables
+
+To calculate partial correlation, we use Education and Sex as covariables. Taking cocaine use pattern, tobacco total years, CCQ, BIS, ASIP
+
+```{r message=FALSE, warning=FALSE}
+data.noddi<-noddi %>% filter(Group==2) 
+data.clinicals<-clinicals %>% filter(grupo==2) 
+data.noddi<-data.noddi[-c(1:4)]
+data.clinicals<-data.clinicals[-c(1:2)]
+data.clinicals[is.na(data.clinicals)]<-0
+data.clinic<-data.clinicals[-c(1:4,8:9,11,18:55,58)]
+clin<-1:ncol(data.clinic)
+nods<-1:ncol(data.noddi)
+structures<-colnames(data.noddi)
+score.clini<-colnames(data.clinic)
+
+library(ppcor)
+pctest.noddi.clinical<-lapply(clin,function(y) sapply(nods, function(x) pcor.test(data.noddi[x],data.clinic[y],list(data.clinicals$educ,data.clinicals$sex), method="pearson")))
+
+pc.nclin<-lapply(pctest.noddi.clinical, head, 1)
+pc.nclins<-lapply(pc.nclin,setNames,structures)
+r.pcor<-bind_rows(pc.nclins)
+rownames(r.pcor)<-score.clini
+
+ppc.nclin<-lapply(pctest.noddi.clinical, `[`, 2, )
+ppc.nclinr<-lapply(ppc.nclin,function(d) rbind(d))
+ppc.nclins<-lapply(ppc.nclinr,setNames,structures)
+p.pcors<-bind_rows(ppc.nclins)
+rownames(p.pcors)<-score.clini
+
+p.pcors<-data.matrix(p.pcors)
+ppvalues.bc<-p.pcors[which(p.pcors<=0.05)]
+matrixr.pcor<-data.matrix(r.pcor)
+#write.csv(p.pcors,"p_pcors.csv", row.names = TRUE)
+#write.csv(matrixr.pcor,"matrixr_pcor.csv", row.names = TRUE)
+
+```
+
+After calculated it, we can load it in a superheat plot, only checking the p-values > 0.05, and add it in a csv table, for non significant we put 0-values
+
+```{r}
+library(superheat)
+clin.cor.r2<-read.csv(paste0(getwd(),"/data/dataclin8_final.csv"))
+m.clin.cor.r<-data.matrix(clin.cor.r2[,-c(1,2,3)])
+gears <- paste(clin.cor.r2$Area, "Matter")
+rownames(m.clin.cor.r)<-clin.cor.r2$Region
+colnames(m.clin.cor.r)<-c("Age onset","week dose",
+                          "Cognitive","Motor","Non planned","Total score")
+
+superheat(m.clin.cor.r, 
+                  pretty.order.rows = TRUE,
+                  pretty.order.cols = FALSE,
+                  heat.pal = c("#005e91", "white","#c43333"),
+                  heat.na.col = "white",
+                  n.clusters.rows = 2,
+                  membership.rows = gears, #puesto a mano, borrar si se desea hacer por kmeans
+                  left.label = "variable",
+                  left.label.col = "white",
+                  row.title.size = 6,
+                  bottom.label.text.angle = 90,
+                  column.title.size = 6,
+                  yr = clin.cor.r2$FW,
+                  yr.axis.name = "Viso Values",
+                  yr.axis.size = 15,
+                  yr.plot.type = "bar",
+                  yr.bar.col = "black",
+                  X.text = as.matrix(m.clin.cor.r),
+                  yr.cluster.col = c("#65767b","#93c6d4"),
+                  bottom.label.col = c("#b3e2cd","#b3e2cd",
+                                       "#b6a3c8","#b6a3c8","#b6a3c8","#b6a3c8"),
+                  bottom.label.size = 0.20042)
 ```
 
