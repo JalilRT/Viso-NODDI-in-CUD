@@ -396,3 +396,109 @@ superheat(m.clin.cor.r,
                   bottom.label.size = 0.20042)
 ```
 
+
+## Data exploration
+
+### Cocaine onset and dosage
+
+In order to check distribution of data based of previous results we plot the associated regions of both measures
+
+```{r}
+library(psych)
+data.noddi<-noddi[-c(1,3,4)] %>% filter(Group==2)
+orb.ifgtri<-data.noddi[c("lh_lateralorbitofrontal","lh_parstriangularis")]
+coc.onset.dose<-data.clinicals[c(3,4)]
+both.coc<-data.frame(coc.onset.dose[1],orb.ifgtri)
+
+pairs.panels(both.coc, 
+             method = "pearson", # correlation method
+             hist.col = "#00AFBB",
+             lm = TRUE,
+             density = TRUE,  # show density plots
+             ellipses = TRUE # show correlation ellipses
+)
+
+sfl.unci.pcg<-data.noddi[c("SFL_L","Unci_L","rh_posteriorcingulate")]
+both.coc<-data.frame(coc.onset.dose[2],sfl.unci.pcg)
+
+pairs.panels(both.coc, 
+             method = "pearson", # correlation method
+             hist.col = "#00AFBB",
+             lm = TRUE,
+             density = TRUE,  # show density plots
+             ellipses = TRUE # show correlation ellipses
+)
+```
+
+
+## Multiple regression
+
+```{r}
+library(MASS)
+data.clinicals<-clinicals %>% filter(grupo==2) 
+data.clinic<-data.clinicals[c("sex","age","educ","coc.age.onset","week.dose","years.begin",
+              "tobc.totyears","ccqn.score","ccqg.score","BIS_cog","BIS_mot","BIS_nonp",
+              "BIS_tot_score","ASIP_alcohol_use","ASIP_drugs_use","ASIP_psychiatric")]
+data.clinic[is.na(data.clinic)]<-0
+frame.noddi<-data.frame(data.noddi[c("Unci_L","SFL_L","lh_parsopercularis","lh_bankssts",
+                                     "lh_rostralmiddlefrontal","rh_rostralmiddlefrontal",
+                                     "rh_lateraloccipital","lh_parstriangularis",
+                                     "lh_lateralorbitofrontal","rh_posteriorcingulate",
+                                     "rh_postcentral")],data.clinic)
+
+unci.m.noddi<-lm(Unci_L~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(unci.m.noddi, direction = "both", trace = F)
+step$call
+
+sfl.m.noddi<-lm(SFL_L~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(sfl.m.noddi, direction = "both", trace = F)
+step$call
+
+lof.m.noddi<-lm(lh_lateralorbitofrontal~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(lof.m.noddi, direction = "both", trace = F)
+step$call
+
+oper.m.noddi<-lm(lh_parsopercularis~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(oper.m.noddi, direction = "both", trace = F)
+step$call
+
+rmf.m.noddi<-lm(rh_rostralmiddlefrontal~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(rmf.m.noddi, direction = "both", trace = F)
+step$call
+
+loc.m.noddi<-lm(rh_lateraloccipital~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(loc.m.noddi, direction = "both", trace = F)
+step$call
+
+trian.m.noddi<-lm(lh_parstriangularis~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(trian.m.noddi, direction = "both", trace = F)
+step$call
+
+pcg.m.noddi<-lm(rh_posteriorcingulate~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(pcg.m.noddi, direction = "both", trace = F)
+step$call
+
+poc.m.noddi<-lm(rh_postcentral~sex+age+educ+coc.age.onset+week.dose+years.begin+
+              tobc.totyears+ccqn.score+ccqg.score+BIS_cog+BIS_mot+BIS_nonp+
+              BIS_tot_score+ASIP_alcohol_use+ASIP_drugs_use+ASIP_psychiatric,data=frame.noddi)
+step <- stepAIC(poc.m.noddi, direction = "both", trace = F)
+step$call
+```
+
+

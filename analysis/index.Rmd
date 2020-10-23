@@ -20,6 +20,8 @@ jalil.rasgadoto@gmail.com and/or apurva.shah@scmia.edu.in
 
 BIDS compliant raw MRI data are available at OpenNeuro: https://openneuro.org/datasets/ds003037/versions/1.0.0
 
+Clinical and Viso-NODDI data are in folder: data/
+
 # Workflow and Code
 
 For check the workflow go to above tab. Csv files and supplementaries are available in source github of this page: data/
