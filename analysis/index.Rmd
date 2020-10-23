@@ -10,11 +10,13 @@ editor_options:
 
 Datasets and code for the "Neurite orientation dispersion and density imaging in cocaine use disorder" analysis.
 
-Please let us know if something in the code is incomplete or files are missing or you have any problems:
+Please let us know if something in the code is incomplete or files are missing or you have any problems by here or in:
 
 jalil.rasgadoto@gmail.com and/or apurva.shah@scmia.edu.in
 
 # About
+
+The present study is the result of the exploration analysis of a subjects sample from The Mexican dataset of substance use disorder patients obtained from the National Institute of Psychiatry in Mexico City. In here, we explored the Neurite orientation dispersion and density imaging, specifically in Viso-values. Perfomed by Eduardo A. Garza-Villarreal and Madhura Ingalhalikar.
 
 # Data
 

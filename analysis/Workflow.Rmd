@@ -363,7 +363,7 @@ matrixr.pcor<-data.matrix(r.pcor)
 
 After calculated it, we can load it in a superheat plot, only checking the p-values > 0.05, and add it in a csv table, for non significant we put 0-values
 
-```{r}
+```{r,dpi=200,fig.height=8, fig.width=7}
 library(superheat)
 clin.cor.r2<-read.csv(paste0(getwd(),"/data/dataclin8_final.csv"))
 m.clin.cor.r<-data.matrix(clin.cor.r2[,-c(1,2,3)])
@@ -403,7 +403,7 @@ superheat(m.clin.cor.r,
 
 In order to check distribution of data based of previous results we plot the associated regions of both measures
 
-```{r}
+```{r, fig.height=5,fig.width=5}
 library(psych)
 data.noddi<-noddi[-c(1,3,4)] %>% filter(Group==2)
 orb.ifgtri<-data.noddi[c("lh_lateralorbitofrontal","lh_parstriangularis")]
